@@ -9,7 +9,7 @@ app_name = StudyConfig.name
 urlpatterns = [
     path('lesson/', LessonListView.as_view()),
     path('lesson/create/', LessonCreateView.as_view()),
-    path('lesson/<int:pk>', LessonDetailView.as_view()),
+    path('lesson/<int:pk>/', LessonDetailView.as_view()),
     path('lesson/<int:pk>/update/', LessonUpdateView.as_view()),
     path('lesson/<int:pk>/delete/', LessonDeleteView.as_view()),
 ]

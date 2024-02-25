@@ -1,8 +1,12 @@
 from rest_framework import serializers
 from study.models import Course, Lesson
+from rest_framework.relations import SlugRelatedField
 
 
 class LessonSerializer(serializers.ModelSerializer):
+    # SlugRelatedField для вывода названия курса, а не его id
+    course = SlugRelatedField(slug_field='name', queryset=Course.objects.all())
+
     class Meta:
         model = Lesson
         fields = '__all__'
