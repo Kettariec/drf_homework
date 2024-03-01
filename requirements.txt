@@ -4,3 +4,4 @@ djangorestframework
 pillow
 python-dotenv
 django-filter
+djangorestframework-simplejwt
