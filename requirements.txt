@@ -1,7 +1,7 @@
-django
-psycopg2-binary
-djangorestframework
-pillow
-python-dotenv
-django-filter
-djangorestframework-simplejwt
+django 5.0.2
+psycopg2-binary 2.9.9
+djangorestframework 3.14.0
+pillow 10.2.0
+python-dotenv 1.0.1
+django-filter 23.5
+djangorestframework-simplejwt 5.3.1

@@ -1,7 +1,9 @@
 from django.urls import path
 from study.apps import StudyConfig
 from rest_framework import routers
-from study.views import *
+from study.views import (LessonListView, LessonCreateView,
+                         LessonDetailView, LessonUpdateView,
+                         LessonDeleteView, CourseViewSet)
 
 app_name = StudyConfig.name
 

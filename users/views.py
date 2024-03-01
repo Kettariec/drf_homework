@@ -3,9 +3,9 @@ from rest_framework import filters
 from users.serializers import (PaymentSerializer,
                                UserSerializer, UserDetailSerializer)
 from rest_framework.generics import (ListAPIView, RetrieveAPIView,
-                                     DestroyAPIView, UpdateAPIView, CreateAPIView)
+                                     DestroyAPIView, UpdateAPIView,
+                                     CreateAPIView)
 from users.models import User
-from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsOwner
 
@@ -34,7 +34,6 @@ class UserDetailView(RetrieveAPIView):
 class UserCreateView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
 
 
 class UserUpdateView(UpdateAPIView):
@@ -47,7 +46,3 @@ class UserDeleteView(DestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated, IsOwner]
-
-
-# class MyTokenObtainPairView(TokenObtainPairView):
-#     serializer_class = MyTokenObtainPairSerializer
