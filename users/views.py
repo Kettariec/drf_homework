@@ -6,7 +6,7 @@ from rest_framework.generics import (ListAPIView, RetrieveAPIView,
                                      DestroyAPIView, UpdateAPIView,
                                      CreateAPIView)
 from users.models import User
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from users.permissions import IsOwner
 
 
@@ -34,6 +34,7 @@ class UserDetailView(RetrieveAPIView):
 class UserCreateView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = [AllowAny]
 
 
 class UserUpdateView(UpdateAPIView):
