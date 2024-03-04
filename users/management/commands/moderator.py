@@ -4,7 +4,7 @@ from django.core.management import BaseCommand
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        manager_group = Group.objects.create(name='moderator')
+        moderator_group = Group.objects.create(name='moderator')
 
         perm_1 = Permission.objects.get(content_type__app_label='study',
                                         content_type__model='course',
@@ -19,7 +19,7 @@ class Command(BaseCommand):
                                         content_type__model='lesson',
                                         codename='change_lesson')
 
-        manager_group.permissions.add(perm_1)
-        manager_group.permissions.add(perm_2)
-        manager_group.permissions.add(perm_3)
-        manager_group.permissions.add(perm_4)
+        moderator_group.permissions.add(perm_1)
+        moderator_group.permissions.add(perm_2)
+        moderator_group.permissions.add(perm_3)
+        moderator_group.permissions.add(perm_4)
