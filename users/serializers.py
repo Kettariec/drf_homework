@@ -14,12 +14,6 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ("id", "email", "phone", "city", "avatar", "password")
-
-
-class UserDetailSerializer(serializers.ModelSerializer):
     payment_list = SerializerMethodField()
 
     def get_payment_list(self, user):
@@ -30,7 +24,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id", "email", "phone", "city",
-                  "avatar", "payment_list", "password")
+                  "avatar", "password", "payment_list")
 
 
 # class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
