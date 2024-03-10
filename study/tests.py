@@ -121,5 +121,5 @@ class SubscriptionTestCase(APITestCase):
 
         self.assertEquals(
             response.json(),
-            {'message': 'подписка добавлена'}
+            'подписка удалена'
         )

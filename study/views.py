@@ -75,13 +75,14 @@ class SubscriptionAPIView(APIView):
         user = self.request.user
         course_id = self.request.data.get('course')
         course_item = get_object_or_404(Course, pk=course_id)
-        subs_item = Subscription.objects.get_or_create(user=user, course=course_item)
+        # get_or_create возвращает кортеж из двух элементов:
+        # объект и bool(создан или получен из базы)
+        subs_item, created = Subscription.objects.get_or_create(user=user, course=course_item)
 
-        if subs_item.exists():
+        if created:
+            message = 'подписка добавлена'
+        else:
             subs_item.delete()
             message = 'подписка удалена'
 
-        else:
-            message = 'подписка добавлена'
-
-        return Response({'message': message})
+        return Response(message)
