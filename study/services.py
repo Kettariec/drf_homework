@@ -14,7 +14,7 @@ class StripeService:
                                     currency='rub',
                                     product=create_product['id'])
 
-        session = stripe.checkout.Session.create(succes_url='http://127.0.0.1:8000/',
+        session = stripe.checkout.Session.create(success_url='http://127.0.0.1:8000/',
                                                  line_items=[{"price": price.id, "quantity": 1}],
                                                  mode='payment', client_reference_id=user.id)
         return session
