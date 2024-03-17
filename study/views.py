@@ -115,7 +115,7 @@ class CheckPaymentAPIView(RetrieveAPIView):
         self.object = super().get_object()
         session_id = self.object.session_id
         session = StripeService(STRIPE_API).check_payment(session_id)
-        if session.payment_status == 'paid' or session.payment_status == 'complete':
+        if session.status == 'complete':
             self.object.is_paid = True
         self.object.save()
         return self.object
