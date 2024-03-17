@@ -96,6 +96,25 @@ class LessonTestCase(APITestCase):
             status.HTTP_204_NO_CONTENT
         )
 
+    def test_validator(self):
+        data = {
+            "name": "test",
+            "course": "test",
+            "video": "https://www.test.com/54321"
+        }
+        response = self.client.post(reverse('study:lesson_create'), data=data)
+
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_400_BAD_REQUEST
+        )
+
+        self.assertEqual(
+            response.json(),
+            {'non_field_errors':
+                 ['Ссылки на уроки могут быть только с платформы youtube']}
+        )
+
 
 class SubscriptionTestCase(APITestCase):
     def setUp(self) -> None:
@@ -112,7 +131,6 @@ class SubscriptionTestCase(APITestCase):
         }
 
         response = self.client.post(reverse('study:subscription'), data=data)
-        print(response.json())
 
         self.assertEquals(
             response.status_code,
