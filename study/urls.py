@@ -5,7 +5,7 @@ from study.views import (LessonListView, LessonCreateView,
                          LessonDetailView, LessonUpdateView,
                          LessonDeleteView, CourseViewSet,
                          SubscriptionAPIView, PayCourseAPIView,
-                         CheckPaymentAPIView)
+                         CheckPaymentAPIView, SetLikeLessonAPIView)
 
 app_name = StudyConfig.name
 
@@ -21,6 +21,8 @@ urlpatterns = [
 
     path('pay_course/<int:pk>/', PayCourseAPIView.as_view(), name='pay_course'),
     path('check_pay/<int:pk>/', CheckPaymentAPIView.as_view(), name='check_pay'),
+
+    path('like/', SetLikeLessonAPIView.as_view(), name='like'),
 ]
 
 router = routers.SimpleRouter()

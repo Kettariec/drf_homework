@@ -11,9 +11,10 @@ from study.pagination import CourseAndLessonPagination
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from users.serializers import PaymentSerializer
-from users.models import Payment
+from users.models import Payment, User
 from study.services import StripeService
 from config.settings import STRIPE_API
+from study.tasks import mailing_about_updates, send_message_about_like
 
 
 class CourseViewSet(ModelViewSet):
@@ -36,6 +37,10 @@ class CourseViewSet(ModelViewSet):
         new_course = serializer.save()
         new_course.owner = self.request.user
         new_course.save()
+
+    def perform_update(self, serializer):
+        course = serializer.save()
+        mailing_about_updates.delay(course.pk)
 
 
 class LessonCreateView(CreateAPIView):
@@ -119,3 +124,14 @@ class CheckPaymentAPIView(RetrieveAPIView):
             self.object.is_paid = True
         self.object.save()
         return self.object
+
+
+class SetLikeLessonAPIView(APIView):
+    def post(self, request):
+        user = get_object_or_404(User, pk=request.data.get('user'))
+        lesson = get_object_or_404(Lesson, pk=request.data.get('lesson'))
+        if lesson.likes.filter(id=user.id).exists():
+            return Response({'result': f'Вы уже ставили лайк уроку {lesson}'}, status=200)
+        send_message_about_like.delay(user.email, lesson.name)
+        lesson.likes.add(user)
+        return Response({'result': f'Урок {lesson} понравился {user.email}'}, status=200)
