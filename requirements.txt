@@ -14,4 +14,4 @@ celery==5.3.6
 eventlet==0.35.2
 redis==5.0.3
 django-celery-beat==2.6.0
-telebot=0.0.5
+telebot==0.0.5

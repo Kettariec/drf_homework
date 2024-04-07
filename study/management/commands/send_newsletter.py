@@ -7,7 +7,7 @@ MY_ID = os.getenv('TELEGRAM_MY_ID')
 
 class Command(BaseCommand):
     URL = 'https://api.telegram.org/'
-    Token = os.getenv('Telegram_Token')
+    Token = os.getenv('TELEGRAM_TOKEN')
 
     def handle(self, *args, **options):
 

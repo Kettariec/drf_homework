@@ -2,7 +2,7 @@ import telebot
 import os
 from django.core.management import BaseCommand
 
-API_KEY = os.getenv('Telegram_Token')
+API_KEY = os.getenv('TELEGRAM_TOKEN')
 MY_ID = os.getenv('TELEGRAM_MY_ID')
 
 
