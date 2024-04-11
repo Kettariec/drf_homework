@@ -1,13 +1,15 @@
 from celery import shared_task
-from django.utils import timezone
 from calendar import monthrange
 from datetime import datetime, timedelta
 from users.models import User
+import pytz
+from django.conf import settings
 
 
 @shared_task
 def check_user_activity():
-    now = datetime.now(tz=timezone.utc)
+    zone = pytz.timezone(settings.TIME_ZONE)
+    now = datetime.now(zone)
     month = now.month
     year = now.year
     days_count = monthrange(year, month)
