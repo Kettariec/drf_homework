@@ -54,6 +54,14 @@ users/
     urls.py - файл маршрутизации приложения
     views.py - контроллеры
 
+.gitignore - Git файл.
+
+.dockerignore <br>
+Dockerfile <br>
+docker-compose.yaml - Docker файлы.
+
+env.example - пример заполнения переменных окружения.
+
 manage.py - точка входа веб-приложения
 
 requirements.txt - список зависимостей для проекта.
