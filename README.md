@@ -1,7 +1,5 @@
 
-<h2 align="center">Курсовая работа Django DRF</h2>
-
-Приложение платформы онлайн обучения с возможностью оплаты через Stripe.
+<h2 align="center">Приложение платформы онлайн обучения с возможностью оплаты через Stripe.</h2>
 
 
 <!-- USAGE EXAMPLES -->
@@ -78,5 +76,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 kettariec@gmail.com
 
 https://github.com/Kettariec/drf_homework
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
