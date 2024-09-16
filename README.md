@@ -8,11 +8,11 @@
 Перед запуском web-приложения создайте базу данных, создайте и примените миграции, установите необходимые пакеты из файла requirements.txt и заполните файл .env по образцу .env.example. Используйте команду "python manage.py csu" для создания суперпользователя и "python manage.py moderator" для создания группы с функционалом менеджера. Для запуска используйте команду "python manage.py runserver" либо через конфигурационные настройки PyCharm.
 
 
-### Docker 
+## Docker 
 Создать образы и контейнеры DOCKER с помощью команд: "docker-compose build" и "docker-compose up".
 
 
-## Структура проекта
+## Project structure
 
 config/
 
@@ -64,15 +64,10 @@ manage.py - точка входа веб-приложения
 
 requirements.txt - список зависимостей для проекта.
 
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 
 <!-- CONTACT -->
 ## Contact
 
 kettariec@gmail.com
 
-https://github.com/Kettariec/drf_homework
+https://github.com/Kettariec/training_platform_drf
